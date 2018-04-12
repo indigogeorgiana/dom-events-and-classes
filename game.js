@@ -32,7 +32,6 @@ function makeBlue (evt) {
   
 // CREATE FUNCTION hide HERE
 function hide (evt){
-  evt.preventDefault()
   evt.target.classList.toggle('invisible')
   updateCounts()
 }
@@ -43,10 +42,23 @@ function updateCounts () {
     green: 0,
     invisible: 0
   }
-  
-  // WRITE CODE HERE TO COUNT BLUE, GREEN, AND INVISIBLE DOTS
 
-  // Once you've done the counting, this function will update the display
+// WRITE CODE HERE TO COUNT BLUE, GREEN, AND INVISIBLE DOTS
+//Once you have an array with all the dots in it, 
+var board = document.getElementsByClassName('board')[0].children;
+//you're going to need to loop through them using a for loop
+  for (var i = 0;i<board.length;i++){
+     if (board[i].classList.contains('blue')){
+//if it does, increase the totals.blue property by one       
+      totals.blue++;
+//Repeat that check for 'green' and 'invisible' classes      
+    } else if (board[i].classList.contains('green')){
+      totals.green++;
+    } else if (board[i].classList.contains('invisible')){
+      totals.invisible++;
+    }
+}
+// Once you've done the counting, this function will update the display
   displayTotals(totals)
   updateCounts()
 }
